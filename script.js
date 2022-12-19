@@ -69,6 +69,19 @@ function createCell() {
   return cell;
 }
 
+// Dichiaro una funzione per generare un numero random.
+const getUniqueRandomNumber = (min, max, blacklist) => {
+  let randomNumber;
+
+  do{
+    randomNumber = Math.floor(Math.random() * (max + 1 - min)) + min;
+  } while (blacklist.includes(randomNumber));
+
+  return randomNumber;
+}
+
+
+
 // Prendo gli elementi dalla pagina.
 const gridElement = document.getElementById('grid');
 const buttonElement = document.getElementById('button');
@@ -101,17 +114,18 @@ let counter = 0;
 // Apro un ciclo for per ripetere l'operazione 100 volte.
 for (let i = 1; i <= totalCells; i++) {
 
-    const cell = createCell();
-
+  
     // Agganciare un event listener al button.  
     buttonElement.addEventListener('click', function() {
       
       startPlay.classList.add('d-none');
       gridElement.appendChild(cell);
       cell.append(i);
-    
+
     })
     
+const cell = createCell();
+
     // Array che accumula le celle già selezionate.
     const clickedCells = [];
 
@@ -135,10 +149,21 @@ for (let i = 1; i <= totalCells; i++) {
       
 
       })
-          
-          
+                 
 }
 
+
+// Ripeto la funzione per tante volte quante occorrono per ottenere 16 numeri diversi.
+const extractedNumber = [];
+
+for (let i = 1; i <= 16; i++) {
+  const bombCell = getUniqueRandomNumber (1, totalCells, extractedNumber);
+
+  extractedNumber.push(bombCell);
+
+}
+
+console.log(extractedNumber);
 
 
 
