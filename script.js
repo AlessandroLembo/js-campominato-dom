@@ -115,9 +115,10 @@ for (let i = 1; i <= 16; i++) {
   const bombCell = getUniqueRandomNumber (1, totalCells, dangerNumber);
 
   dangerNumber.push(bombCell);
-  
-  
+
 }
+
+console.log(dangerNumber);
 
 // Variabile che conta il punteggio del giocatore;
 let counter = 0;
@@ -157,7 +158,7 @@ const cell = createCell();
 
         // Controllo se ho calpestato una bomba.
         if (dangerNumber.includes(i)) {
-          cell.classList.add('atomic-cells');
+          cell.classList.add('red-cells');
           gridElement.classList.add('invalidate');
           console.log(`Partita terminata, hai totalizzato ${counter} punti`);    
         } else {
