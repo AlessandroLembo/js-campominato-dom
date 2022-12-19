@@ -98,6 +98,14 @@
   #grid .cell.clicked{
       background-color: dodgerblue;
   }
+
+  #grid .cell.atomic-cells{
+    background-color: red;
+  }
+
+  #grid.invalidate{
+    pointer-events: none;
+  }
   
   
   /* Footer */

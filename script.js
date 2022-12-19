@@ -54,7 +54,8 @@ ANALISI:
 
 - AL CLICK SULLA CELLA: 
    1 - Controllo se ho calpestato una bomba.
-   2 - Se si, stampo il console punteggio e messaggio con partita terminata.
+   2 - Se si, la cella diventa rossa e finisce la partita. Stampo in console punteggio
+       e messaggio.
    3 - Se no, la partita continua ed incremento il punteggio.
 
 - Controllo se il punteggio accumulato ha raggiunto il massimo consentito 
@@ -79,7 +80,6 @@ const getUniqueRandomNumber = (min, max, blacklist) => {
 
   return randomNumber;
 }
-
 
 
 // Prendo gli elementi dalla pagina.
@@ -108,6 +108,20 @@ const cols = 10;
 const totalCells = rows * cols;
 // console.log(totalCells);
 
+
+// Ripeto la funzione per tante volte quante occorrono per ottenere 16 numeri diversi.
+const extractedNumber = [];
+
+for (let i = 1; i <= 16; i++) {
+  const bombCell = getUniqueRandomNumber (1, totalCells, extractedNumber);
+
+  extractedNumber.push(bombCell);
+
+}
+
+console.log(extractedNumber);
+
+
 // Variabile che conta il punteggio del giocatore;
 let counter = 0;
 
@@ -122,7 +136,8 @@ for (let i = 1; i <= totalCells; i++) {
       gridElement.appendChild(cell);
       cell.append(i);
 
-    })
+
+})
     
 const cell = createCell();
 
@@ -144,26 +159,25 @@ const cell = createCell();
         clickedCells.push(i);
         // console.log(clickedCells);
 
-        counter = counter + 1;
-        // console.log(counter);
-      
+        
 
+        // Controllo se ho calpestato una bomba.
+        if (extractedNumber.includes(i)) {
+           cell.classList.add('atomic-cells');
+           gridElement.classList.add('invalidate');
+           console.log(`Partita terminata, hai totalizzato ${counter} punti`);
+           
+        } else {
+          counter = counter + 1;
+          // console.log(counter);
+        }
+         
       })
                  
 }
 
 
-// Ripeto la funzione per tante volte quante occorrono per ottenere 16 numeri diversi.
-const extractedNumber = [];
 
-for (let i = 1; i <= 16; i++) {
-  const bombCell = getUniqueRandomNumber (1, totalCells, extractedNumber);
-
-  extractedNumber.push(bombCell);
-
-}
-
-console.log(extractedNumber);
 
 
 
