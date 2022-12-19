@@ -56,6 +56,10 @@
       border-radius: 10px;
       cursor: pointer;
   }
+
+  #button.invalidate{
+    pointer-events: none;
+  }
   
   /* Main */
   main{
@@ -74,7 +78,7 @@
       height: 1400px;
       margin: 0 auto;
   }
-  
+
   #grid h1{
       color: coral;
       font-size: 80px;
@@ -106,7 +110,6 @@
   #grid.invalidate{
     pointer-events: none;
   }
-  
   
   /* Footer */
   .footer-right{

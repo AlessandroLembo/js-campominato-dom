@@ -62,6 +62,12 @@ ANALISI:
   (totale celle - totale numeri random): ho vinto, stampo il messaggio in pagina.
 */
 
+// Prendo gli elementi dalla pagina.
+const gridElement = document.getElementById('grid');
+const buttonElement = document.getElementById('button');
+const difficultyLevelElement = document.getElementById('difficulty-level');
+// console.log(difficultyLevelElement);
+
 // Dichiaro una funzione per creare una cella.
 function createCell() {
   const cell = document.createElement('div');
@@ -80,13 +86,6 @@ const getUniqueRandomNumber = (min, max, blacklist) => {
 
   return randomNumber;
 }
-
-
-// Prendo gli elementi dalla pagina.
-const gridElement = document.getElementById('grid');
-const buttonElement = document.getElementById('button');
-const difficultyLevelElement = document.getElementById('difficulty-level');
-// console.log(difficultyLevelElement);
 
 // Dichiaro una funzione per creare il titolo nella pagina.
 function createTitle() {
@@ -116,11 +115,9 @@ for (let i = 1; i <= 16; i++) {
   const bombCell = getUniqueRandomNumber (1, totalCells, dangerNumber);
 
   dangerNumber.push(bombCell);
-
+  
+  
 }
-
-console.log(dangerNumber);
-
 
 // Variabile che conta il punteggio del giocatore;
 let counter = 0;
@@ -128,14 +125,13 @@ let counter = 0;
 // Apro un ciclo for per ripetere l'operazione 100 volte.
 for (let i = 1; i <= totalCells; i++) {
 
-  
     // Agganciare un event listener al button.  
     buttonElement.addEventListener('click', function() {
       
+      buttonElement.classList.add('invalidate');
       startPlay.classList.add('d-none');
       gridElement.appendChild(cell);
       cell.append(i);
-
 
 })
     
@@ -159,13 +155,11 @@ const cell = createCell();
         clickedCells.push(i);
         // console.log(clickedCells);
 
-        
         // Controllo se ho calpestato una bomba.
         if (dangerNumber.includes(i)) {
-           cell.classList.add('atomic-cells');
-           gridElement.classList.add('invalidate');
-           console.log(`Partita terminata, hai totalizzato ${counter} punti`);
-           
+          cell.classList.add('atomic-cells');
+          gridElement.classList.add('invalidate');
+          console.log(`Partita terminata, hai totalizzato ${counter} punti`);    
         } else {
           counter = counter + 1;
           // console.log(counter);
@@ -175,14 +169,8 @@ const cell = createCell();
 
         if(counter === finishLine){
           console.log('Complimenti, hai vinto la partita');
-          gridElement.classList.add('d-none');
-          startPlay.classList.remove('d-none');
           
-
         }
-        
-          
-        
          
       })
                  
