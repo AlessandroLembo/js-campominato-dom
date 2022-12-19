@@ -109,14 +109,22 @@ for (let i = 1; i <= totalCells; i++) {
       cell.append(i);
     
     })
-      
+    
+     
+   
+    
+     
+    let counter = 0;
     // Aggancio un event listener alla cella creata.
-    cell.addEventListener('click', function() {
-      cell.classList.add('clicked');  
-      console.log(`Cella numero: ${i}`);
-
-    })
-
+      cell.addEventListener('click', function() {
+            cell.classList.add('clicked');  
+          //   console.log(`Cella numero: ${i}`);
+          
+          counter = counter + 1;
+          console.log(counter);
+          });
+        
+      
 }
 
 
