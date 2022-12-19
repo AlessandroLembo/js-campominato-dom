@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campo minato play</title>
+    
+    <!--Link Font-awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!--Link CSS-->
+    <link rel="stylesheet" href="style.css">
+
+    <!--Link Javascript-->
+    <script defer src="script.js"></script>
+    
+</head>
+<body>
+    <header>
+       <div class="header-container">
+          <div class="left-header">
+             <img src="logo.png" alt="logo">
+             <h1>Campo minato</h1>
+          </div>
+
+          <div class="right-header">
+            <label for="level">Difficoltà:</label>
+            <select name="level" id="difficulty-level">
+               <option value="basso">basso</option>
+               <option value="medio">medio</option>
+               <option value="alto">alto</option>
+            </select>
+            <button id="button">Play</button>
+          </div>
+       </div>
+    </header>
+       
+    <main>
+      <div id="grid">
+       </div>
+    </main>
+
+    <footer>
+        <div class="footer-right">
+           <span>Made with</span>
+           <i class="fa-solid fa-heart"></i>
+           <span>by
+            <a href="#" id="boolean-link">Boolean</a>
+           </span>
+        </div>
+    </footer>
+</body>
+</html>
