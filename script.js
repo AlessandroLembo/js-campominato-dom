@@ -110,16 +110,16 @@ const totalCells = rows * cols;
 
 
 // Ripeto la funzione per tante volte quante occorrono per ottenere 16 numeri diversi.
-const extractedNumber = [];
+const dangerNumber = [];
 
 for (let i = 1; i <= 16; i++) {
-  const bombCell = getUniqueRandomNumber (1, totalCells, extractedNumber);
+  const bombCell = getUniqueRandomNumber (1, totalCells, dangerNumber);
 
-  extractedNumber.push(bombCell);
+  dangerNumber.push(bombCell);
 
 }
 
-console.log(extractedNumber);
+console.log(dangerNumber);
 
 
 // Variabile che conta il punteggio del giocatore;
@@ -160,9 +160,8 @@ const cell = createCell();
         // console.log(clickedCells);
 
         
-
         // Controllo se ho calpestato una bomba.
-        if (extractedNumber.includes(i)) {
+        if (dangerNumber.includes(i)) {
            cell.classList.add('atomic-cells');
            gridElement.classList.add('invalidate');
            console.log(`Partita terminata, hai totalizzato ${counter} punti`);
@@ -171,6 +170,19 @@ const cell = createCell();
           counter = counter + 1;
           // console.log(counter);
         }
+
+        const finishLine = totalCells - dangerNumber.length;
+
+        if(counter === finishLine){
+          console.log('Complimenti, hai vinto la partita');
+          gridElement.classList.add('d-none');
+          startPlay.classList.remove('d-none');
+          
+
+        }
+        
+          
+        
          
       })
                  
