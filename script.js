@@ -95,6 +95,8 @@ const cols = 10;
 const totalCells = rows * cols;
 // console.log(totalCells);
 
+// Variabile che conta il punteggio del giocatore;
+let counter = 0;
 
 // Apro un ciclo for per ripetere l'operazione 100 volte.
 for (let i = 1; i <= totalCells; i++) {
@@ -110,22 +112,34 @@ for (let i = 1; i <= totalCells; i++) {
     
     })
     
-     
-   
-    
-     
-    let counter = 0;
+    // Array che accumula le celle già selezionate.
+    const clickedCells = [];
+
     // Aggancio un event listener alla cella creata.
       cell.addEventListener('click', function() {
-            cell.classList.add('clicked');  
-          //   console.log(`Cella numero: ${i}`);
-          
-          counter = counter + 1;
-          console.log(counter);
-          });
+
         
+        if(clickedCells.includes(i)){
+          alert('hai già cliccato questa cella');
+          return;
+        } 
+        
+        cell.classList.add('clicked');  
+        // console.log(`Cella numero: ${i}`);
+        
+        clickedCells.push(i);
+        // console.log(clickedCells);
+
+        counter = counter + 1;
+        // console.log(counter);
       
+
+      })
+          
+          
 }
+
+
 
 
 
